@@ -3,7 +3,7 @@
 // Siguria bëhet nga rregullat RLS në databazë: të gjithë lexojnë, vetëm admini shkruan.
 
 export const SUPABASE_URL = ''; // p.sh. 'https://abcd1234.supabase.co'
-export const SUPABASE_ANON_KEY = ''; // "anon public" key nga Supabase
+export const SUPABASE_ANON_KEY = ''; // "Publishable key" ose "anon public" key nga Supabase
 
 export const BUCKET = 'property-images';
 export const isConfigured = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
@@ -77,11 +77,9 @@ async function accessToken() {
 
 // ---------- Databaza ----------
 async function rest(path, { method = 'GET', body, auth = false } = {}) {
-  const headers = {
-    apikey: SUPABASE_ANON_KEY,
-    Authorization: `Bearer ${auth ? await accessToken() : SUPABASE_ANON_KEY}`,
-    'Content-Type': 'application/json',
-  };
+  // Pa login dërgohet vetëm "apikey" (punon edhe me "anon" edhe me "publishable" key)
+  const headers = { apikey: SUPABASE_ANON_KEY, 'Content-Type': 'application/json' };
+  if (auth) headers.Authorization = `Bearer ${await accessToken()}`;
   if (method !== 'GET') headers.Prefer = 'return=representation';
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
     method,
