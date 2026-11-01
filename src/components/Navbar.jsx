@@ -30,7 +30,7 @@ export default function Navbar() {
     <header className={`navbar ${solid ? 'navbar--solid' : ''}`}>
       <div className="container navbar__inner">
         <Link to="/" className="logo" onClick={() => setOpen(false)}>
-          JD<span>Properties</span>
+          <b className="logo__mark">JD</b><span>PROPERTIES</span>
         </Link>
 
         <nav className={`navbar__links ${open ? 'is-open' : ''}`}>

@@ -25,9 +25,11 @@ export default function PropertyCard({ property: p }) {
               <IoBedOutline /> {p.beds} {p.beds === 1 ? 'Bed' : 'Beds'}
             </span>
           )}
-          <span>
-            <LuBath /> {p.baths} {p.baths === 1 ? 'Bath' : 'Baths'}
-          </span>
+          {p.baths > 0 && (
+            <span>
+              <LuBath /> {p.baths} {p.baths === 1 ? 'Bath' : 'Baths'}
+            </span>
+          )}
           <span>
             <BiArea /> {p.area} m²
           </span>

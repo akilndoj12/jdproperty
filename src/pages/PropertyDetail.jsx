@@ -65,10 +65,12 @@ function Detail({ id }) {
                   <strong>{p.beds}</strong> Bedrooms
                 </div>
               )}
-              <div>
-                <LuBath />
-                <strong>{p.baths}</strong> Bathrooms
-              </div>
+              {p.baths > 0 && (
+                <div>
+                  <LuBath />
+                  <strong>{p.baths}</strong> Bathrooms
+                </div>
+              )}
               <div>
                 <BiArea />
                 <strong>{p.area} m²</strong> Area

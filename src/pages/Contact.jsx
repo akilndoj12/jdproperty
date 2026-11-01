@@ -5,11 +5,11 @@ import { site } from '../data/site.js';
 
 export default function Contact() {
   const items = [
-    { icon: <FiPhone />, label: 'Phone', value: site.phone, href: `tel:${site.phone.replace(/\s/g, '')}` },
+    { icon: <FiPhone />, label: 'Phone / WhatsApp', value: site.phone, href: `tel:${site.phone.replace(/\s/g, '')}` },
     { icon: <FiMail />, label: 'Email', value: site.email, href: `mailto:${site.email}` },
     { icon: <FiMapPin />, label: 'Office', value: site.address },
     { icon: <FiClock />, label: 'Working hours', value: site.hours },
-  ];
+  ].filter((i) => i.value);
 
   return (
     <>

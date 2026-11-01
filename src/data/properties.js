@@ -1,4 +1,4 @@
-// Të dhënat e pronave (shembull). Zëvendësoji me pronat reale të agjencisë.
+// Të dhënat e pronave (SHEMBUJ – jo prona reale). Zëvendësoji me pronat reale të agjencisë.
 // Fotot janë nga Unsplash; vendos fotot tuaja te /public/images dhe ndrysho linket.
 
 const u = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=80`;
@@ -41,7 +41,7 @@ export const properties = [
   {
     id: 3,
     title: 'Seafront Penthouse',
-    type: 'Penthouse',
+    type: 'Apartment',
     status: 'For Sale',
     city: 'Durrës',
     address: 'Plazh, Durrës',
@@ -58,7 +58,7 @@ export const properties = [
   {
     id: 4,
     title: 'Family House with Garden',
-    type: 'House',
+    type: 'Villa',
     status: 'For Sale',
     city: 'Tirana',
     address: 'Farkë, Tirana',
@@ -140,10 +140,28 @@ export const properties = [
       'Bright apartment a short walk from the beach, with a large balcony and partial sea view. Available for long-term rent.',
     features: ['Partial sea view', 'Balcony', 'Furnished', 'Air conditioning'],
   },
+  {
+    id: 9,
+    title: 'Building Plot with Permit Potential',
+    type: 'Land',
+    status: 'For Sale',
+    city: 'Tirana',
+    address: 'Tirana outskirts',
+    price: 180000,
+    beds: 0,
+    baths: 0,
+    area: 1500,
+    featured: false,
+    images: [u('photo-1500382017468-9049fed747ef'), u('photo-1500076656116-558758c991c1'), u('photo-1501785888041-af3ef285b470')],
+    description:
+      'Flat plot of land with road access, suitable for a residential villa or small development project.',
+    features: ['Road access', 'Utilities nearby', 'Clear documents'],
+  },
 ];
 
 export const cities = [...new Set(properties.map((p) => p.city))];
-export const types = [...new Set(properties.map((p) => p.type))];
+// Kategoritë e agjencisë (si te Instagram)
+export const types = ['Apartment', 'Villa', 'Commercial', 'Land'];
 
 // Formaton çmimin: p.sh. 650000 -> "€650,000" ose "€550 / month" për qira
 export function formatPrice(p) {

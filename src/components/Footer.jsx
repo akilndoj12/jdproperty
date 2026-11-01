@@ -9,26 +9,30 @@ export default function Footer() {
       <div className="container footer__grid">
         <div>
           <Link to="/" className="logo logo--light">
-            JD<span>Properties</span>
+            <b className="logo__mark">JD</b><span>PROPERTIES</span>
           </Link>
           <p className="footer__text">
-            Your trusted partner for buying, selling and renting premium properties across Albania.
+            Beyond Real Estate. Residential, commercial and investment properties across Albania.
           </p>
           <div className="footer__social">
             <a href={site.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
               <FaInstagram />
             </a>
-            <a href={site.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">
-              <FaFacebookF />
-            </a>
+            {site.facebook && (
+              <a href={site.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">
+                <FaFacebookF />
+              </a>
+            )}
           </div>
         </div>
 
         <div>
           <h4>Explore</h4>
           <Link to="/properties">All properties</Link>
-          <Link to="/properties?status=For Sale">For sale</Link>
-          <Link to="/properties?status=For Rent">For rent</Link>
+          <Link to="/properties?type=Apartment">Apartments</Link>
+          <Link to="/properties?type=Villa">Villas</Link>
+          <Link to="/properties?type=Commercial">Commercial</Link>
+          <Link to="/properties?type=Land">Land</Link>
           <Link to="/about">About us</Link>
         </div>
 
@@ -37,9 +41,11 @@ export default function Footer() {
           <a href={`tel:${site.phone.replace(/\s/g, '')}`}>
             <FiPhone /> {site.phone}
           </a>
-          <a href={`mailto:${site.email}`}>
-            <FiMail /> {site.email}
-          </a>
+          {site.email && (
+            <a href={`mailto:${site.email}`}>
+              <FiMail /> {site.email}
+            </a>
+          )}
           <span>
             <FiMapPin /> {site.address}
           </span>

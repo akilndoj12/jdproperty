@@ -13,7 +13,7 @@ const values = [
 export default function About() {
   return (
     <>
-      <PageHeader title="About JD Properties" subtitle="Real estate done with care, honesty and expertise." />
+      <PageHeader title="About JD Properties" subtitle="Beyond Real Estate." />
 
       <section className="section">
         <div className="container about">
@@ -22,9 +22,8 @@ export default function About() {
             <span className="eyebrow">Who we are</span>
             <h2>Helping people find their place since day one</h2>
             <p>
-              JD Properties is a real estate agency based in Tirana, specialized in premium residential and commercial
-              properties across Albania. From city apartments to seaside villas, we guide our clients through every
-              step: search, viewings, negotiation, documents and notary.
+              JD Properties is a real estate agency in Albania working across residential, commercial and investment
+              properties: apartments, villas, land and commercial units. From the first viewing to the notary, we guide our clients through every step.
             </p>
             <p>
               Whether you are buying your first home, investing, or selling a property, our team gives you honest
