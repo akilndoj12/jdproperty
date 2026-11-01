@@ -2,8 +2,8 @@
 // URL dhe "anon key" janë publike (janë bërë për t'u përdorur në browser).
 // Siguria bëhet nga rregullat RLS në databazë: të gjithë lexojnë, vetëm admini shkruan.
 
-export const SUPABASE_URL = 'https://afwmuslycqivegribnei.supabase.co';
-export const SUPABASE_ANON_KEY = 'sb_publishable_ByBVCzgZPK7i0_-3asQVjg_p_NAPx4y'; // Publishable key (publik)
+export const SUPABASE_URL = 'https://skjbyacswtlqyxouodjc.supabase.co';
+export const SUPABASE_ANON_KEY = 'sb_publishable_Bujddag5HNK12PSOHKxytQ_14YO2Wst'; // Publishable key (publik)
 
 export const BUCKET = 'property-images';
 export const isConfigured = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
