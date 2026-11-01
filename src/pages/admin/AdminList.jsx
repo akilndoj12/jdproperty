@@ -44,7 +44,7 @@ export default function AdminList() {
         </Link>
       </div>
 
-      {error && <p className="form__error">{error}</p>}
+      {error && <p className="form__error">Database error: {error}. Check that schema.sql was run in Supabase.</p>}
       {msg && <p className="admin__msg">{msg}</p>}
 
       <input

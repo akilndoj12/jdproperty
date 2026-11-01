@@ -18,6 +18,8 @@ export function PropertiesProvider({ children }) {
       setProperties(await fetchProperties());
       setError('');
     } catch (e) {
+      // Nëse databaza s'përgjigjet, faqja publike tregon pronat shembull që të mos duket bosh
+      setProperties(sampleProperties);
       setError(e.message);
     } finally {
       setLoading(false);
