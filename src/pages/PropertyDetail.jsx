@@ -8,7 +8,8 @@ import { FaWhatsapp } from 'react-icons/fa';
 import ContactForm from '../components/ContactForm.jsx';
 import PropertyCard from '../components/PropertyCard.jsx';
 import NotFound from './NotFound.jsx';
-import { properties, formatPrice } from '../data/properties.js';
+import { formatPrice } from '../data/properties.js';
+import { useProperties } from '../data/PropertiesContext.jsx';
 import { site } from '../data/site.js';
 
 // "key" bën që galeria të fillojë nga fotoja e parë kur kalon nga një pronë te tjetra
@@ -18,9 +19,11 @@ export default function PropertyDetail() {
 }
 
 function Detail({ id }) {
-  const p = properties.find((x) => x.id === Number(id));
+  const { properties, loading } = useProperties();
+  const p = properties.find((x) => String(x.id) === String(id));
   const [active, setActive] = useState(0);
 
+  if (loading) return <section className="section detail"><div className="container">Loading…</div></section>;
   if (!p) return <NotFound />;
 
   const similar = properties.filter((x) => x.id !== p.id && (x.city === p.city || x.type === p.type)).slice(0, 3);
@@ -45,16 +48,18 @@ function Detail({ id }) {
         </div>
 
         {/* Galeria: kliko foton e vogël për ta parë të madhe */}
+        {p.images?.length > 0 && (
         <div className="gallery">
-          <img className="gallery__main" src={p.images[active]} alt={p.title} />
+          <img className="gallery__main" src={(p.images || [])[active]} alt={p.title} />
           <div className="gallery__thumbs">
-            {p.images.map((img, i) => (
+            {(p.images || []).map((img, i) => (
               <button key={img} className={i === active ? 'is-active' : ''} onClick={() => setActive(i)}>
                 <img src={img} alt={`${p.title} ${i + 1}`} />
               </button>
             ))}
           </div>
         </div>
+        )}
 
         <div className="detail__layout">
           <div>
@@ -82,7 +87,7 @@ function Detail({ id }) {
 
             <h2>Features</h2>
             <ul className="features">
-              {p.features.map((f) => (
+              {(p.features || []).map((f) => (
                 <li key={f}>
                   <FiCheck /> {f}
                 </li>

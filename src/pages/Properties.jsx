@@ -2,10 +2,13 @@ import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import PageHeader from '../components/PageHeader.jsx';
 import PropertyCard from '../components/PropertyCard.jsx';
-import { properties, cities, types } from '../data/properties.js';
+import { types } from '../data/properties.js';
+import { useProperties } from '../data/PropertiesContext.jsx';
 
 export default function Properties() {
   // Filtrat ruhen në URL (p.sh. /properties?city=Tirana) që linku të ndahet lehtë
+  const { properties, loading } = useProperties();
+  const cities = [...new Set(properties.map((p) => p.city).filter(Boolean))];
   const [params, setParams] = useSearchParams();
   const status = params.get('status') || '';
   const type = params.get('type') || '';
@@ -25,9 +28,9 @@ export default function Properties() {
     );
     if (sort === 'price-asc') r = [...r].sort((a, b) => a.price - b.price);
     if (sort === 'price-desc') r = [...r].sort((a, b) => b.price - a.price);
-    if (sort === 'newest') r = [...r].sort((a, b) => b.id - a.id);
+    if (sort === 'newest') r = [...r].sort((a, b) => String(b.created_at || b.id).localeCompare(String(a.created_at || a.id), undefined, { numeric: true }));
     return r;
-  }, [status, type, city, sort]);
+  }, [properties, status, type, city, sort]);
 
   return (
     <>
@@ -65,9 +68,9 @@ export default function Properties() {
             )}
           </div>
 
-          <p className="results">{list.length} properties found</p>
+          <p className="results">{loading ? 'Loading…' : `${list.length} properties found`}</p>
 
-          {list.length ? (
+          {loading ? null : list.length ? (
             <div className="grid">
               {list.map((p) => (
                 <PropertyCard key={p.id} property={p} />

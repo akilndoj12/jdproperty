@@ -9,6 +9,10 @@ import PropertyDetail from './pages/PropertyDetail.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
 import NotFound from './pages/NotFound.jsx';
+import AdminLayout from './pages/admin/AdminLayout.jsx';
+import AdminList from './pages/admin/AdminList.jsx';
+import AdminForm from './pages/admin/AdminForm.jsx';
+import { PropertiesProvider } from './data/PropertiesContext.jsx';
 
 // Kthen faqen në krye sa herë ndryshon adresa
 function ScrollToTop() {
@@ -20,10 +24,13 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const { pathname } = useLocation();
+  const isAdmin = pathname.startsWith('/admin');
+
   return (
-    <>
+    <PropertiesProvider>
       <ScrollToTop />
-      <Navbar />
+      {!isAdmin && <Navbar />}
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -31,11 +38,17 @@ export default function App() {
           <Route path="/properties/:id" element={<PropertyDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          {/* Paneli i adminit: /admin */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminList />} />
+            <Route path="new" element={<AdminForm />} />
+            <Route path="edit/:id" element={<AdminForm />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <Footer />
-      <WhatsAppButton />
-    </>
+      {!isAdmin && <Footer />}
+      {!isAdmin && <WhatsAppButton />}
+    </PropertiesProvider>
   );
 }

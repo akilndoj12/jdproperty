@@ -9,7 +9,7 @@ export default function PropertyCard({ property: p }) {
   return (
     <Link to={`/properties/${p.id}`} className="card">
       <div className="card__img">
-        <img src={p.images[0]} alt={p.title} loading="lazy" />
+        {p.images?.[0] && <img src={p.images[0]} alt={p.title} loading="lazy" />}
         <span className={`badge ${p.status === 'For Rent' ? 'badge--rent' : ''}`}>{p.status}</span>
         <span className="card__type">{p.type}</span>
       </div>

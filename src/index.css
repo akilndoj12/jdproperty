@@ -609,3 +609,76 @@ textarea:focus { border-color: var(--primary); }
 .cat small { color: rgba(255, 255, 255, 0.6); }
 @media (max-width: 860px) { .cats__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 400px) { .cat { padding: 12px; gap: 10px; } .cat__icon { width: 38px; height: 38px; } }
+
+/* ===== Paneli i adminit ===== */
+.muted { color: var(--muted); }
+.btn--sm { padding: 8px 14px; font-size: 0.85rem; }
+.btn--danger { background: #c0392b; color: #fff; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.form__error { color: #c0392b; font-weight: 500; margin: 0; }
+.logo--dark { color: var(--dark); }
+
+.admin { min-height: 100vh; background: var(--bg-alt); }
+.admin__bar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 20px; background: #fff; border-bottom: 1px solid var(--border);
+}
+.admin__bar-actions { display: flex; gap: 8px; }
+.admin__main { max-width: 960px; margin: 0 auto; padding: 32px 20px 80px; }
+.admin__card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 24px; margin-bottom: 20px;
+}
+.admin__login { max-width: 420px; margin: 60px auto; }
+.admin__head { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 20px; }
+.admin__head h1, .admin__form h1 { font-size: 1.8rem; margin-bottom: 4px; }
+.admin__head p { margin: 0; }
+.admin__msg { background: #e3f3f1; color: var(--primary-dark); padding: 10px 14px; border-radius: 10px; }
+.admin__search { margin-bottom: 16px; }
+.admin__empty { text-align: center; }
+.admin__list { display: grid; gap: 12px; }
+.admin__row {
+  display: grid; grid-template-columns: 88px 1fr auto; gap: 16px; align-items: center;
+  background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 10px;
+}
+.admin__thumb { width: 88px; height: 66px; border-radius: 8px; overflow: hidden; background: var(--bg-alt); }
+.admin__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.admin__info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.admin__info strong { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.admin__star { color: #e0a800; }
+.admin__price { color: var(--primary); font-weight: 700; }
+.admin__actions { display: flex; gap: 8px; }
+
+.admin__form label { display: flex; flex-direction: column; gap: 6px; font-weight: 500; font-size: 0.9rem; }
+.admin__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.admin__grid--4 { grid-template-columns: repeat(4, 1fr); }
+.admin__check { flex-direction: row !important; align-items: center; gap: 10px !important; }
+.admin__check input { width: auto; }
+.admin__photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.admin__photo { position: relative; aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden; background: var(--bg-alt); }
+.admin__photo img { width: 100%; height: 100%; object-fit: cover; }
+.admin__cover {
+  position: absolute; left: 8px; top: 8px; background: var(--primary); color: #fff;
+  font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+}
+.admin__photo-actions { position: absolute; right: 6px; top: 6px; display: flex; gap: 6px; }
+.admin__photo-actions button {
+  width: 30px; height: 30px; border-radius: 50%; border: 0; cursor: pointer;
+  display: grid; place-items: center; background: rgba(0, 0, 0, 0.6); color: #fff;
+}
+.admin__upload {
+  aspect-ratio: 4 / 3; border: 2px dashed var(--border); border-radius: 10px; cursor: pointer;
+  display: flex !important; flex-direction: column; align-items: center; justify-content: center;
+  color: var(--primary); font-size: 1.4rem;
+}
+.admin__upload span { font-size: 0.85rem; }
+.admin__save { display: flex; justify-content: flex-end; gap: 10px; }
+
+@media (max-width: 640px) {
+  .admin__row { grid-template-columns: 64px 1fr; }
+  .admin__thumb { width: 64px; height: 52px; }
+  .admin__actions { grid-column: 1 / -1; justify-content: flex-end; }
+  .admin__grid, .admin__grid--4 { grid-template-columns: 1fr 1fr; }
+  .admin__head { flex-direction: column; align-items: flex-start; }
+}

@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FiSearch, FiArrowRight, FiHome, FiBriefcase, FiTrendingUp, FiShield, FiMap } from 'react-icons/fi';
 import { MdOutlineVilla, MdOutlineApartment } from 'react-icons/md';
 import PropertyCard from '../components/PropertyCard.jsx';
-import { properties, cities, types } from '../data/properties.js';
+import { types } from '../data/properties.js';
+import { useProperties } from '../data/PropertiesContext.jsx';
 
 const HERO = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80';
 
@@ -25,7 +26,10 @@ const categories = [
 export default function Home() {
   const navigate = useNavigate();
   const [search, setSearch] = useState({ status: '', type: '', city: '' });
-  const featured = properties.filter((p) => p.featured).slice(0, 3);
+  const { properties } = useProperties();
+  const cities = [...new Set(properties.map((p) => p.city).filter(Boolean))];
+  // Pronat e zgjedhura; nëse s'ka asnjë të shënuar, tregohen 3 më të rejat
+  const featured = (properties.some((p) => p.featured) ? properties.filter((p) => p.featured) : properties).slice(0, 3);
 
   // Kërkimi dërgon filtrat te faqja Properties përmes URL-së
   const handleSearch = (e) => {
