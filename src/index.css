@@ -1,13 +1,13 @@
 /* ===== Ngjyrat dhe variablat kryesore (ndryshoji këtu për të ndryshuar stilin e gjithë faqes) ===== */
 :root {
-  --primary: #17897f;        /* teal – ngjyra e logos JD Properties */
-  --primary-dark: #0f6b63;
+  --primary: #b08d57;        /* ari / bronz – ngjyra e markës */
+  --primary-dark: #8f6f3f;
   --dark: #111418;
   --text: #2b2f36;
   --muted: #6b7280;
   --bg: #ffffff;
-  --bg-alt: #f2f7f6;
-  --border: #dde9e7;
+  --bg-alt: #f6f4f0;
+  --border: #e7e2d9;
   --radius: 14px;
   --shadow: 0 10px 30px rgba(17, 20, 24, 0.08);
   --container: 1200px;
@@ -87,7 +87,7 @@ h3 { font-size: 1.15rem; font-weight: 600; }
   color: var(--primary);
   margin-bottom: 10px;
 }
-.eyebrow--light { color: #7fd6cc; }
+.eyebrow--light { color: #e8d3ad; }
 
 /* ===== Butonat ===== */
 .btn {
@@ -198,7 +198,7 @@ h3 { font-size: 1.15rem; font-weight: 600; }
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(110deg, rgba(6, 30, 28, 0.85) 20%, rgba(6, 30, 28, 0.35));
+  background: linear-gradient(110deg, rgba(10, 12, 15, 0.82) 20%, rgba(10, 12, 15, 0.35));
 }
 .hero__content {
   position: relative;
@@ -329,7 +329,7 @@ textarea:focus { border-color: var(--primary); }
   place-items: center;
   font-size: 1.4rem;
   color: var(--primary);
-  background: #e3f3f1;
+  background: #f3ebdd;
   margin-bottom: 18px;
 }
 
@@ -584,7 +584,7 @@ textarea:focus { border-color: var(--primary); }
 .logo__mark {
   width: 40px; height: 40px; border-radius: 50%;
   display: grid; place-items: center;
-  background: linear-gradient(135deg, #22a596, #0f6b63);
+  background: linear-gradient(135deg, #c9a46c, #8f6f3f);
   color: #fff; font-size: 1rem; font-weight: 800; letter-spacing: -0.03em;
 }
 .logo span { font-size: 0.95rem; font-weight: 600; letter-spacing: 0.18em; margin: 0; }
@@ -602,7 +602,7 @@ textarea:focus { border-color: var(--primary); }
 .cat__icon {
   width: 46px; height: 46px; border-radius: 50%; flex-shrink: 0;
   display: grid; place-items: center; font-size: 1.3rem;
-  background: rgba(23, 137, 127, 0.25); color: #7fd6cc;
+  background: rgba(176, 141, 87, 0.25); color: #e8d3ad;
 }
 .cat:hover .cat__icon { background: rgba(255, 255, 255, 0.2); color: #fff; }
 .cat strong { display: block; font-size: 1rem; }
@@ -634,7 +634,7 @@ textarea:focus { border-color: var(--primary); }
 .admin__head { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 20px; }
 .admin__head h1, .admin__form h1 { font-size: 1.8rem; margin-bottom: 4px; }
 .admin__head p { margin: 0; }
-.admin__msg { background: #e3f3f1; color: var(--primary-dark); padding: 10px 14px; border-radius: 10px; }
+.admin__msg { background: #f3ebdd; color: var(--primary-dark); padding: 10px 14px; border-radius: 10px; }
 .admin__search { margin-bottom: 16px; }
 .admin__empty { text-align: center; }
 .admin__list { display: grid; gap: 12px; }
