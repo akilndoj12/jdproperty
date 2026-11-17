@@ -1,0 +1,17 @@
+# Për Hostinger/Apache: që linket si /properties/3 dhe /admin të hapen direkt
+# edhe pas rifreskimit të faqes (React Router).
+Options -MultiViews
+RewriteEngine On
+RewriteBase /
+
+# Kalo gjithmonë në https
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Skedarët që ekzistojnë shërbehen normalisht
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Çdo adresë tjetër i jepet React-it
+RewriteRule ^ index.html [L]
