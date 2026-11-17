@@ -21,10 +21,11 @@ jobs:
         run: |
           URL=$(grep -oP "SUPABASE_URL = '\K[^']+" src/lib/supabase.js)
           KEY=$(grep -oP "SUPABASE_ANON_KEY = '\K[^']+" src/lib/supabase.js)
-          CODE=$(curl -s -o /tmp/out.json -w "%{http_code}" \
-            -H "apikey: $KEY" "$URL/rest/v1/properties?select=id&limit=1")
+          echo "Project: $URL"
+          CODE=$(curl -s -o /tmp/out.json -w "%{http_code}" --max-time 30 \
+            -H "apikey: $KEY" "$URL/rest/v1/properties?select=id&limit=1") || true
           echo "Supabase answered: HTTP $CODE"
-          head -c 300 /tmp/out.json; echo
+          head -c 300 /tmp/out.json 2>/dev/null; echo
           if [ "$CODE" != "200" ]; then
             echo "::error::Supabase nuk u përgjigj (HTTP $CODE). Ndoshta projekti është pauzuar: hap supabase.com dhe shtyp 'Resume project'."
             exit 1
