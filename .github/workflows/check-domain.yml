@@ -1,0 +1,13 @@
+name: Check domain (temporary)
+on: workflow_dispatch
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for d in jdproperties.ltd www.jdproperties.ltd; do
+            echo "== $d"; echo "NS:"; dig +short NS jdproperties.ltd @1.1.1.1
+            echo "A/CNAME:"; dig +short $d @1.1.1.1
+            echo "HTTP:"; curl -sS -o /tmp/p.html -w "%{http_code} %{url_effective}\n" -L --max-time 20 https://$d || true
+            grep -o "<title>[^<]*</title>" /tmp/p.html 2>/dev/null || true
+          done
